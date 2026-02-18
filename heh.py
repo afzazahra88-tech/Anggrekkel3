@@ -233,7 +233,14 @@ with st.expander("🌿 Klik untuk melihat cara membuat pupuk dari kulit pisang")
     - Merangsang pertumbuhan bunga  
     - Menguatkan akar  
     """)
-    
+with st.expander("🌸Tips Anggrek cepat berbunga"):
+
+    st.success("""
+    - Gunakan sprayer untuk mengaplikasikan pupuk pada daun dan akar.
+    - Berikan pupuk secara teratur namun jangan terlalu lembap.
+    - Pastikan anggrek mendapatkan cahaya matahari yang cukup namun tidak langsung.  
+    """)
+
 st.divider()
 st.subheader("📍 Hubungi Kami")
 
@@ -252,3 +259,4 @@ with col2:
     st.link_button("📱 Pesan via WhatsApp", link_wa)
 
 st.caption("© 2026 Toko Anggrek Digital")
+
