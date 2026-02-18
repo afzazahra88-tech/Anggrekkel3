@@ -208,7 +208,7 @@ st.header("🌱 Edukasi: Pupuk Organik untuk Anggrek")
 with st.expander("🌿 Klik untuk melihat cara membuat pupuk dari kulit pisang"):
     
     st.subheader("🎥 Video Tutorial")
-    st.video("https://www.youtube.com/watch?v=Qx_lt-nfl041rqUM")
+    st.video("https://youtu.be/8mZjb9VVrAQ")
 
     st.subheader("🧪 Bahan")
     st.write("""
@@ -251,6 +251,17 @@ with col1:
 **Alamat Galeri:**  
 Jl. C. Simanjuntak No.60, Yogyakarta
 """)
+    
+    st.components.v1.html("""
+<iframe
+  src="https://www.google.com/maps?q=Jl.+C.+Simanjuntak+No.60+Yogyakarta&output=embed"
+  width="100%"
+  height="300"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
+""", height=300)
 
 with col2:
     no_hp = "6288215748030"
@@ -259,4 +270,5 @@ with col2:
     st.link_button("📱 Pesan via WhatsApp", link_wa)
 
 st.caption("© 2026 Toko Anggrek Digital")
+
 
