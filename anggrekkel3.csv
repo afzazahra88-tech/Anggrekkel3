@@ -1,5 +1,5 @@
-nama,kategori,harga,stok,foto,status
-dendorium ungu,dendorium,25.000,1,,beum tersedia
-vandaputih,vanda,20.000,1,,belum tersedia
-vanda ungu,vanda,20.000,1,,belum tersedia
-vanda kuning,vanda,20.000,1,,belum tersedia
+nama,kategori,harga,stok,status,foto
+dendorium ungu,dendorium,25000,1,belum tersedia,dendoriumungu.jpg
+vandaputih,vanda,20000,1,tersedia,vandaputih.jpg
+vanda ungu,vanda,20000,1,belum tersedia,vandaungu.jpg
+vanda kuning,vanda,20000,1,belum tersedia,vandakuning.jpg
