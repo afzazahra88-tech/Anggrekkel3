@@ -81,26 +81,26 @@ def tips_perawatan(kategori):
 
     if kategori == "vanda":
         return """
-💧 Siram 2–3x seminggu  
-☀️ Cahaya terang tidak langsung  
-🌡️ Suhu 18–30°C  
-🌿 Pupuk 2 minggu sekali
+Siram 2–3x seminggu  
+Cahaya terang tidak langsung  
+Suhu 18–30°C  
+Pupuk 2 minggu sekali
 """
 
     elif kategori == "dendrobium":
         return """
-💧 Siram setiap 2 hari sekali  
-☀️ Butuh cahaya lebih banyak  
-🌡️ Suhu 20–32°C  
-🌿 Gunakan pupuk tinggi nitrogen saat fase daun
+Siram setiap 2 hari sekali  
+Butuh cahaya lebih banyak  
+Suhu 20–32°C  
+Gunakan pupuk tinggi nitrogen saat fase daun
 """
 
     else:
         return """
-💧 Siram 2–3x seminggu  
-☀️ Cahaya cukup  
-🌡️ Suhu 20–30°C  
-🌿 Pupuk rutin setiap 2 minggu
+Siram 2–3x seminggu  
+Cahaya cukup  
+Suhu 20–30°C  
+Pupuk rutin setiap 2 minggu
 """
 
 try:
@@ -210,14 +210,14 @@ with st.expander("🌿 Klik untuk melihat cara membuat pupuk dari kulit pisang")
     st.subheader("🎥 Video Tutorial")
     st.video("https://youtu.be/8mZjb9VVrAQ")
 
-    st.subheader("🧪 Bahan")
+    st.subheader("Bahan")
     st.write("""
     - 3–5 kulit pisang  
     - 1 liter air bersih  
     - Botol atau wadah tertutup  
     """)
 
-    st.subheader("🛠 Cara Membuat")
+    st.subheader("Cara Membuat")
     st.write("""
     1. Potong kecil-kecil kulit pisang  
     2. Masukkan ke dalam botol  
@@ -227,7 +227,7 @@ with st.expander("🌿 Klik untuk melihat cara membuat pupuk dari kulit pisang")
     6. Saring sebelum digunakan  
     """)
 
-    st.subheader("💡 Manfaat")
+    st.subheader("Manfaat")
     st.success("""
     - Kaya kalium  
     - Merangsang pertumbuhan bunga  
@@ -270,5 +270,6 @@ with col2:
     st.link_button("📱 Pesan via WhatsApp", link_wa)
 
 st.caption("© 2026 Toko Anggrek Digital")
+
 
 
