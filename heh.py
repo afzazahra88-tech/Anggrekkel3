@@ -140,7 +140,7 @@ try:
                         st.image(row["foto"], use_container_width=True)
 
                     st.subheader(row["nama"])
-                    st.markdown(f"💰 **Rp {int(row['harga']):,}**")
+                    st.markdown(f"**Rp {int(row['harga']):,}**")
 
                     # STATUS
                     if row["status"].lower() == "belum tersedia":
@@ -270,6 +270,7 @@ with col2:
     st.link_button("📱 Pesan via WhatsApp", link_wa)
 
 st.caption("© 2026 Toko Anggrek Digital")
+
 
 
 
