@@ -68,7 +68,7 @@ if os.path.exists("anggrekku.png"):
     st.image("anggrekku.png", use_container_width=True)
 
 st.markdown(
-    "<h1 style='text-align:center;'>🌸 Koleksi Anggrek Kelompok 3</h1>",
+    "<h1 style='text-align:center;'>🌸 Koleksi Anggrek unggulan </h1>",
     unsafe_allow_html=True
 )
 
@@ -270,6 +270,7 @@ with col2:
     st.link_button("📱 Pesan via WhatsApp", link_wa)
 
 st.caption("© 2026 Toko Anggrek Digital")
+
 
 
 
