@@ -144,11 +144,11 @@ try:
 
                     # STATUS
                     if row["status"].lower() == "belum tersedia":
-                        st.error("❌ Belum Tersedia")
+                        st.error("Belum Tersedia")
                     else:
-                        st.success("✅ Tersedia")
+                        st.success("Tersedia")
 
-                        if st.button("🛒 Tambah ke Keranjang", key=f"btn_{index}"):
+                        if st.button("Tambah ke Keranjang", key=f"btn_{index}"):
                             st.session_state.keranjang.append({
                                 "nama": row["nama"],
                                 "harga": row["harga"]
@@ -270,6 +270,7 @@ with col2:
     st.link_button("📱 Pesan via WhatsApp", link_wa)
 
 st.caption("© 2026 Toko Anggrek Digital")
+
 
 
 
