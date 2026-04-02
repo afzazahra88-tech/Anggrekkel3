@@ -1,5 +1,5 @@
 nama,kategori,harga,stok,status,foto
-Dendorium Ungu,dendorium,170000.000,1,belum tersedia,dendoriumungu.jpg
-Vanda Putih,vanda,850000.000,1,tersedia,vandaputih.jpg
-Vanda Ungu,vanda,65000.000,1,belum tersedia,vandaungu.jpg
-Vanda Uuning,vanda,70000.000,1,belum tersedia,vandakuning.jpg
+Dendorium Ungu,dendorium,170000,1,belum tersedia,dendoriumungu.jpg
+Vanda Putih,vanda,85000,1,tersedia,vandaputih.jpg
+Vanda Ungu,vanda,65000,1,belum tersedia,vandaungu.jpg
+Vanda Uuning,vanda,70000,1,belum tersedia,vandakuning.jpg
