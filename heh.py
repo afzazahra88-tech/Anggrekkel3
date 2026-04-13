@@ -169,7 +169,7 @@ try:
             total = 0
 
             for i, item in enumerate(st.session_state.keranjang):
-                st.sidebar.write(f"{item['nama']} - Rp {int(item['harga']):,}")
+                st.sidebar.write(f"{item['nama']} - Rp {int(item['harga']):.}")
                 total += item["harga"]
 
                 if st.sidebar.button("❌ Hapus", key=f"hapus_{i}"):
