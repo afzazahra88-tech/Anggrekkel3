@@ -222,7 +222,15 @@ st.divider()
 st.header("🌱 Edukasi: Pupuk Organik untuk Anggrek")
 
 with st.expander("🌿 Cara membuat pupuk kulit pisang"):
+    st.subheader("🎥 Video Tutorial")
     st.video("https://youtu.be/8mZjb9VVrAQ")
+
+with st.expander("🌸Tips Anggrek cepat berbunga"):
+    st.success("""
+    - Gunakan sprayer untuk mengaplikasikan pupuk pada daun dan akar. 
+    - Berikan pupuk secara teratur namun jangan terlalu lembap. 
+    - Pastikan anggrek mendapatkan cahaya matahari yang cukup namun tidak langsung. 
+    """)
 
 # =========================
 # FOOTER
