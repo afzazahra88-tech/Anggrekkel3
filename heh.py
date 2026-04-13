@@ -228,4 +228,31 @@ with st.expander("🌿 Cara membuat pupuk kulit pisang"):
 # FOOTER
 # =========================
 st.divider()
+st.divider()
+st.subheader("📍 Hubungi Kami")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("""
+**Alamat Galeri:**  
+Jl. C. Simanjuntak No.60, Yogyakarta
+""")
+
+    st.components.v1.html("""
+<iframe
+  src="https://www.google.com/maps?q=Jl.+C.+Simanjuntak+No.60+Yogyakarta&output=embed"
+  width="100%"
+  height="300"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
+""", height=300)
+
+with col2:
+    no_hp = "6288215748030"
+    pesan = "Halo, saya tertarik memesan anggrek di katalog Anda."
+    link_wa = f"https://wa.me/{no_hp}?text={pesan.replace(' ', '%20')}"
+    st.link_button("📱 Pesan via WhatsApp", link_wa)
 st.caption("© 2026 Toko Anggrek Digital")
