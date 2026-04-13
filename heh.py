@@ -225,6 +225,13 @@ with st.expander("🌿 Cara membuat pupuk kulit pisang"):
     st.subheader("🎥 Video Tutorial")
     st.video("https://youtu.be/8mZjb9VVrAQ")
 
+    st.subheader("Bahan") 
+    st.write(""" 
+    - 3–5 kulit pisang 
+    - 1 liter air bersih 
+    - Botol atau wadah tertutup 
+    """)
+
 with st.expander("🌸Tips Anggrek cepat berbunga"):
     st.success("""
     - Gunakan sprayer untuk mengaplikasikan pupuk pada daun dan akar. 
