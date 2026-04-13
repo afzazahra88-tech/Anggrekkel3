@@ -231,6 +231,22 @@ with st.expander("🌿 Cara membuat pupuk kulit pisang"):
     - 1 liter air bersih 
     - Botol atau wadah tertutup 
     """)
+    st.subheader("Cara Membuat")
+    st.write("""
+    1. Potong kecil-kecil kulit pisang  
+    2. Masukkan ke dalam botol  
+    3. Tambahkan 1 liter air  
+    4. Tutup rapat  
+    5. Diamkan 2–3 hari  
+    6. Saring sebelum digunakan  
+    """)
+
+    st.subheader("Manfaat")
+    st.success("""
+    - Kaya kalium  
+    - Merangsang pertumbuhan bunga  
+    - Menguatkan akar  
+    """)
 
 with st.expander("🌸Tips Anggrek cepat berbunga"):
     st.success("""
