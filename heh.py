@@ -2,7 +2,18 @@ import streamlit as st
 import pandas as pd
 import os
 
+# =========================
+# FORMAT RUPIAH (PENTING)
+# =========================
+def format_rupiah(angka):
+    try:
+        return f"Rp {int(angka):,}".replace(",", ".")
+    except:
+        return "Rp 0"
 
+# =========================
+# CONFIG
+# =========================
 st.set_page_config(page_title="Katalog Anggrek", layout="wide")
 
 st.markdown("""
@@ -24,7 +35,7 @@ h2, h3 {
     color: #c2185b !important;
 }
 
-/* Card produk (container) */
+/* Card produk */
 div[data-testid="stVerticalBlock"] > div:has(div.stImage) {
     background-color: white;
     padding: 15px;
@@ -43,7 +54,6 @@ div.stButton > button {
 
 div.stButton > button:hover {
     background-color: #880e4f;
-    color: white;
 }
 
 /* Sidebar */
@@ -51,65 +61,61 @@ section[data-testid="stSidebar"] {
     background-color: #f8bbd0;
 }
 
-/* Expander */
-details {
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 10px;
-}
-
 </style>
 """, unsafe_allow_html=True)
 
+# =========================
+# SESSION
+# =========================
 if "keranjang" not in st.session_state:
     st.session_state.keranjang = []
 
+# =========================
+# HEADER
+# =========================
 if os.path.exists("anggrekku.png"):
     st.image("anggrekku.png", use_container_width=True)
 
-st.markdown(
-    "<h1 style='text-align:center;'>🌸 Koleksi Anggrek unggulan </h1>",
-    unsafe_allow_html=True
-)
-
- 
+st.markdown("<h1 style='text-align:center;'>🌸 Koleksi Anggrek Unggulan</h1>", unsafe_allow_html=True)
 st.divider()
 
+# =========================
+# TIPS PERAWATAN
+# =========================
 def tips_perawatan(kategori):
-
     kategori = kategori.lower().strip()
 
     if kategori == "vanda":
-        return """
-Siram 2–3x seminggu  
+        return """Siram 2–3x seminggu  
 Cahaya terang tidak langsung  
 Suhu 18–30°C  
-Pupuk 2 minggu sekali
-"""
+Pupuk 2 minggu sekali"""
 
     elif kategori == "dendrobium":
-        return """
-Siram setiap 2 hari sekali  
+        return """Siram setiap 2 hari sekali  
 Butuh cahaya lebih banyak  
 Suhu 20–32°C  
-Gunakan pupuk tinggi nitrogen saat fase daun
-"""
+Gunakan pupuk tinggi nitrogen"""
 
     else:
-        return """
-Siram 2–3x seminggu  
+        return """Siram 2–3x seminggu  
 Cahaya cukup  
 Suhu 20–30°C  
-Pupuk rutin setiap 2 minggu
-"""
+Pupuk rutin"""
 
+# =========================
+# LOAD DATA
+# =========================
 try:
     if os.path.exists("anggrekkel3.csv"):
 
-        df = pd.read_csv("anggrekkel3.csv", encoding="utf-8")
+        df = pd.read_csv("anggrekkel3.csv")
         df["harga"] = pd.to_numeric(df["harga"], errors="coerce")
         df["status"] = df["status"].fillna("tersedia")
 
+        # =========================
+        # FILTER
+        # =========================
         st.sidebar.header("🔍 Filter Produk")
 
         kategori_list = ["Semua"] + sorted(df["kategori"].unique())
@@ -134,15 +140,16 @@ try:
             for index, row in df.reset_index().iterrows():
                 with cols[index % 3]:
 
-                    st.markdown("----")
+                    st.markdown("---")
 
                     if os.path.exists(row["foto"]):
                         st.image(row["foto"], use_container_width=True)
 
                     st.subheader(row["nama"])
-                    st.markdown(f"**Rp {int(row['harga']):,}**")
 
-                    # STATUS
+                    # ✅ FORMAT RUPIAH DI SINI
+                    st.markdown(f"**{format_rupiah(row['harga'])}**")
+
                     if row["status"].lower() == "belum tersedia":
                         st.error("Belum Tersedia")
                     else:
@@ -155,11 +162,12 @@ try:
                             })
                             st.success("Ditambahkan ke keranjang!")
 
-                    # TIPS PERAWATAN
                     with st.expander("🌿 Tips Perawatan"):
                         st.markdown(tips_perawatan(row["kategori"]))
 
-        
+        # =========================
+        # SIDEBAR KERANJANG
+        # =========================
         st.sidebar.divider()
         st.sidebar.header("🛍 Keranjang Belanja")
 
@@ -169,7 +177,8 @@ try:
             total = 0
 
             for i, item in enumerate(st.session_state.keranjang):
-                st.sidebar.write(f"{item['nama']} - Rp {int(item['harga']):.}")
+                # ✅ FORMAT DI SINI
+                st.sidebar.write(f"{item['nama']} - {format_rupiah(item['harga'])}")
                 total += item["harga"]
 
                 if st.sidebar.button("❌ Hapus", key=f"hapus_{i}"):
@@ -177,16 +186,20 @@ try:
                     st.rerun()
 
             st.sidebar.divider()
-            st.sidebar.subheader(f"Total: Rp {int(total):,}")
 
-            # Checkout WhatsApp
+            # ✅ TOTAL
+            st.sidebar.subheader(f"Total: {format_rupiah(total)}")
+
+            # =========================
+            # WHATSAPP
+            # =========================
             no_hp = "6288215748030"
             pesan = "Halo, saya ingin memesan:\n"
 
             for item in st.session_state.keranjang:
-                pesan += f"- {item['nama']} (Rp {int(item['harga']):,})\n"
+                pesan += f"- {item['nama']} ({format_rupiah(item['harga'])})\n"
 
-            pesan += f"\nTotal: Rp {int(total):,}"
+            pesan += f"\nTotal: {format_rupiah(total)}"
 
             link_wa = f"https://wa.me/{no_hp}?text={pesan.replace(' ', '%20').replace(chr(10), '%0A')}"
 
@@ -197,82 +210,22 @@ try:
                 st.rerun()
 
     else:
-        st.error("File 'anggrekkel3.csv' tidak ditemukan!")
+        st.error("File CSV tidak ditemukan!")
 
 except Exception as e:
     st.error(f"Terjadi kesalahan: {e}")
 
+# =========================
+# EDUKASI
+# =========================
 st.divider()
 st.header("🌱 Edukasi: Pupuk Organik untuk Anggrek")
 
-with st.expander("🌿 Klik untuk melihat cara membuat pupuk dari kulit pisang"):
-    
-    st.subheader("🎥 Video Tutorial")
+with st.expander("🌿 Cara membuat pupuk kulit pisang"):
     st.video("https://youtu.be/8mZjb9VVrAQ")
 
-    st.subheader("Bahan")
-    st.write("""
-    - 3–5 kulit pisang  
-    - 1 liter air bersih  
-    - Botol atau wadah tertutup  
-    """)
-
-    st.subheader("Cara Membuat")
-    st.write("""
-    1. Potong kecil-kecil kulit pisang  
-    2. Masukkan ke dalam botol  
-    3. Tambahkan 1 liter air  
-    4. Tutup rapat  
-    5. Diamkan 2–3 hari  
-    6. Saring sebelum digunakan  
-    """)
-
-    st.subheader("Manfaat")
-    st.success("""
-    - Kaya kalium  
-    - Merangsang pertumbuhan bunga  
-    - Menguatkan akar  
-    """)
-with st.expander("🌸Tips Anggrek cepat berbunga"):
-
-    st.success("""
-    - Gunakan sprayer untuk mengaplikasikan pupuk pada daun dan akar.
-    - Berikan pupuk secara teratur namun jangan terlalu lembap.
-    - Pastikan anggrek mendapatkan cahaya matahari yang cukup namun tidak langsung.  
-    """)
-
+# =========================
+# FOOTER
+# =========================
 st.divider()
-st.subheader("📍 Hubungi Kami")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.markdown("""
-**Alamat Galeri:**  
-Jl. C. Simanjuntak No.60, Yogyakarta
-""")
-    
-    st.components.v1.html("""
-<iframe
-  src="https://www.google.com/maps?q=Jl.+C.+Simanjuntak+No.60+Yogyakarta&output=embed"
-  width="100%"
-  height="300"
-  style="border:0;"
-  allowfullscreen=""
-  loading="lazy">
-</iframe>
-""", height=300)
-
-with col2:
-    no_hp = "6288215748030"
-    pesan = "Halo, saya tertarik memesan anggrek di katalog Anda."
-    link_wa = f"https://wa.me/{no_hp}?text={pesan.replace(' ', '%20')}"
-    st.link_button("📱 Pesan via WhatsApp", link_wa)
-
 st.caption("© 2026 Toko Anggrek Digital")
-
-
-
-
-
-
